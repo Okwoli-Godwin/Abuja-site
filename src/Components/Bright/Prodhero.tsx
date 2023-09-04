@@ -219,8 +219,8 @@ const Box = styled.div`
     padding-bottom: 300px;
     padding-top: 300px;
     @media screen and (max-width: 500px){
-      padding-bottom: 200px;
-    padding-top: 200px;
+      padding-bottom: 160px;
+    padding-top: 160px;
     }
 `
 const Container2 = styled.div`
