@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+
 import styled from "styled-components";
-import Header from "../Header";
+
 import img from "../Assets/uniAbuja.jpeg";
 import { MdDelete } from "react-icons/md";
 import Footer from "../Footer/Footer";
@@ -134,50 +134,7 @@ const Box = styled.div`
     height: 300px;
   }
 `;
-const Pagi = styled.div`
-  width: 100%;
-  display: flex;
-  height: 20px;
-  /* background-color: red; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-`;
-const Stack = styled.div``;
-const Name = styled.div`
-  font-weight: bold;
-  font-size: 20px;
-`;
-const Namehold = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 10px;
-`;
-const Hold = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-const Image = styled.div`
-  width: 100%;
-  height: 80%;
-  display: flex;
-  /* background-color: green; */
-`;
-const Imageholder = styled.div`
-  width: 250px;
-  height: 400px;
-  border-radius: 15px;
-  /* background-color: red; */
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  margin-left: 17px;
-`;
+
 const Down = styled.div`
   width: 100%;
   display: flex;

@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import images from "../Assets/edu.jpeg"
-import images2 from "../Assets/mat1.jpg"
-import images3 from "../Assets/mat1.jpg"
-import {GrCheckmark} from "react-icons/gr"
 
 const Find = () => {
   return (
@@ -37,9 +34,6 @@ const Find = () => {
 
 export default Find
 
-const Icons = styled.div`
-    margin-right: 10px;
-`
 
 const Nav2 = styled.div`
     p{
@@ -73,15 +67,6 @@ const Nav2 = styled.div`
     }
 `
 
-const Up2 = styled.h3`
-    font-size: 32px;
-    line-height: 40px;
-    font-family: 'Inria Serif','Garamond',serif;
-    font-family: Arial, Nova;
-    font-weight: 400;
-    color: #132128;
-    margin-top: -5px;
-`
 
 
 const Nav = styled.div`
@@ -221,13 +206,6 @@ const Wrapper = styled.div<{ fd: string }>`
     }
 `
 
-const Top = styled.h2`
-    font-size: 40px;
-    line-height: 48px;
-    font-family: 'Inria Serif','Garamond',serif;
-    font-weight: 400;
-    color: #132128;
-`
 
 const Container = styled.div`
     width: 100%;

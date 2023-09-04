@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import Career from '../Career/Career'
 import Footer from '../Footer/Footer'
 import Slide from '../Slide/Slide'
