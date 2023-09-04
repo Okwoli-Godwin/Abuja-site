@@ -44,7 +44,7 @@ const handleDownloadClick = async (pdfUrl: string) => {
           <Img src={img} alt="University of Abuja" />
           <Left>
             <Text>
-              Hello, Welcome to the <span>Center for Undergraduate Research.</span> Download PDF files
+              Hello, Welcome to the <span>Center for Undergraduate Research.</span> Download Journals
             </Text>
           </Left>
         </Top>
@@ -81,6 +81,7 @@ const Data = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+
   h5 {
     margin: 0px;
     font-weight: 500;
