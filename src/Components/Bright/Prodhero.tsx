@@ -227,9 +227,6 @@ const Container2 = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    @media screen and (max-width: 425px) {
-            height: 450px;
-        }
 `
 const Container = styled.div`
   display: flex;
