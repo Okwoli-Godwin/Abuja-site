@@ -81,7 +81,7 @@ const Data = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-
+  margin-top: 40px;
   h5 {
     margin: 0px;
     font-weight: 500;

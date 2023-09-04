@@ -94,7 +94,8 @@ const Data = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
+  /* background-color: red; */
   h5 {
     margin: 0px;
     font-weight: 500;
