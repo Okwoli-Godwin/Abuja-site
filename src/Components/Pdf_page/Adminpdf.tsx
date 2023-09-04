@@ -103,6 +103,7 @@ const Data = styled.div`
     margin-top: 10px;
     line-height: 20px;
     text-align: center;
+    padding-top: 15px;
     /* width: 80px; */
     word-wrap: break-word; 
 

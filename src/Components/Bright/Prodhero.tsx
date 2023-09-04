@@ -218,6 +218,10 @@ const Box = styled.div`
     align-items: center;
     padding-bottom: 300px;
     padding-top: 300px;
+    @media screen and (max-width: 500px){
+      padding-bottom: 200px;
+    padding-top: 200px;
+    }
 `
 const Container2 = styled.div`
     width: 100%;
