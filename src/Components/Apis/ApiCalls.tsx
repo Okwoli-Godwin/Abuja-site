@@ -28,6 +28,7 @@ export const ReadData = async () => {
 export const ReadPdf = async () => {
   return await axios
     .get("https://cur-uni-abuja.onrender.com/app/pdf/getall")
+    // .get("http://localhost: 9090/app/pdf/post")
     .then((res) => res.data)
     .catch((err) => err);
 };

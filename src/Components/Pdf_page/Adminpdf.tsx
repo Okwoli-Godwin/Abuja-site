@@ -12,7 +12,28 @@ import Swal from "sweetalert2";
 import Adminhead from "../Adminhead/Adminhead"
 
 const Adminpdf = () => {
-    const { data, isLoading, isError } = useQuery(["pdf"], ReadPdf);
+
+  const handleDownloadClick = async (pdfUrl: string) => {
+  try {
+    const response = await fetch(pdfUrl);
+    const blob = await response.blob();
+    
+    // Extract the file name from the URL
+    const urlParts = pdfUrl.split("/");
+    const fileName = urlParts[urlParts.length - 1];
+
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error("Error downloading file:", error);
+  }
+};
+  const { data, isLoading, isError } = useQuery(["pdf"], ReadPdf);
     
     const deleteOnePdf = useMutation({
         mutationFn: (id: any) => deletepdf(id),
@@ -36,6 +57,7 @@ const Adminpdf = () => {
     const submit = (id: any) => {
         deleteOnePdf.mutate(id)
     }
+    console.log(data?.data?.map((e: any) => e.PDFFile))
 
   const getFilePluginInstance = getFilePlugin();
 
@@ -69,9 +91,7 @@ const Adminpdf = () => {
                 <Data>
                   <h5>{e.namepdf}</h5>
               </Data>
-                <a style={{textDecoration: "none"}} href={e.PDFFile} download>
-                <Button>Download</Button>
-                    </a>
+                <Button onClick={() => handleDownloadClick(e.PDFFile)}>Download</Button>
                      <Delete
                 onClick={() => {
                   submit(e._id);
