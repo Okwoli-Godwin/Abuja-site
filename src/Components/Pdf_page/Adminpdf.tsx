@@ -122,10 +122,10 @@ const Data = styled.div`
     width: 300px;
     flex-wrap: wrap;
     font-size: 15px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     line-height: 20px;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 10px;
     /* width: 80px; */
     word-wrap: break-word; 
 
@@ -144,7 +144,7 @@ const Data = styled.div`
   }
   font-size: 1.5rem;
   line-height: 2rem;
-  margin-top: -15px;
+  /* margin-top: -15px; */
   /* background-color: red; */
   width: 100%;
   p {
