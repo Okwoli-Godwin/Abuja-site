@@ -107,7 +107,7 @@ const Data = styled.div`
     @media screen and (max-width: 500px) {
         /* background-color: red; */
         width: 95%;
-        margin-top:  30px;
+        margin-top:  5px;
     }
   }
   font-size: 1.5rem;
