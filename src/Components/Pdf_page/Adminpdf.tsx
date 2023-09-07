@@ -137,9 +137,10 @@ const Data = styled.div`
         /* background-color: red; */
         width: 90%;
     }
-    @media screen and (max-width: 425px) {
+    @media screen and (max-width: 500px) {
         /* background-color: red; */
         width: 95%;
+        margin-top:  30px;
     }
   }
   font-size: 1.5rem;
@@ -205,6 +206,7 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* height: 100%;  */
   display: flex;
   margin: 5px;
   margin-bottom: 15px;
@@ -223,7 +225,7 @@ const Box = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 350px;
+    /* height: 350px; */
   }
 `;
 
