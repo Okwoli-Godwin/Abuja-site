@@ -82,18 +82,19 @@ const Data = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  /* background-color: red; */
   h5 {
     margin: 0px;
     font-weight: 500;
     width: 300px;
     flex-wrap: wrap;
     font-size: 15px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     line-height: 20px;
     text-align: center;
+    padding-top: 10px;
     /* width: 80px; */
     word-wrap: break-word; 
-    font-weight: 600;
 
     @media screen and (max-width: 320px) {
         /* background-color: red; */
@@ -103,14 +104,15 @@ const Data = styled.div`
         /* background-color: red; */
         width: 90%;
     }
-    @media screen and (max-width: 425px) {
+    @media screen and (max-width: 500px) {
         /* background-color: red; */
         width: 95%;
+        margin-top:  30px;
     }
   }
   font-size: 1.5rem;
   line-height: 2rem;
-  margin-top: -15px;
+  /* margin-top: -15px; */
   /* background-color: red; */
   width: 100%;
   p {
@@ -156,9 +158,11 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* height: 100%;  */
   display: flex;
   margin: 5px;
   margin-bottom: 15px;
+  position: relative;
   padding-bottom: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   @media screen and (max-width: 1024px) {
@@ -173,7 +177,7 @@ const Box = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 350px;
+    /* height: 350px; */
   }
 `;
 
