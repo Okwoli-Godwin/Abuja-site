@@ -105,7 +105,9 @@ const Header = () => {
                         <One>Researchers</One>
                     </NavLink>
                    
-                    <a href="https://bit.ly/3XZtpLQ"><One>Need a Research Collaborator</One></a>
+                      <NavLink to="/collaborator">
+                          <One>Need a Research Collaborator</One>
+                    </NavLink>
                     <a href=" http://bit.ly/3kmH0Pz"><One>Need a Research Mentor</One></a>
                     <a href="https://bit.ly/3ZjJw7S"><One>Trainning for Proposal writting</One></a>
                     <a href="https://bit.ly/3Ku1K2u"><One>Trainning for Presentation</One></a>

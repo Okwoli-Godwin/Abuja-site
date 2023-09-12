@@ -24,6 +24,7 @@ import Admingallery from './Gallery/Admingallery'
 import Pdf from './Pdf_page/Pdf'
 import Adminpdf from './Pdf_page/Adminpdf'
 import Pdfupload from './UploadPage/Pdfupload'
+import Collaborator from './Research/Collaborator'
 
 const Allroutes = () => {
     let element = useRoutes([
@@ -81,6 +82,10 @@ const Allroutes = () => {
                 {
                     path: "/eligibility",
                     element: <Eligibility />
+                },
+                {
+                    path: "/collaborator",
+                    element: <Collaborator />
                 },
                 {
                     path: "/admin",
