@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import { AiOutlineMail } from "react-icons/ai"
 
 const Collaborator = () => {
+    const [formData, setFormData] = useState({
+    name: '',
+    department: '',
+    level: '',
+    email: '',
+    phoneNumber: '',
+    });
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
   return (
       <Container>
           <Wrapper>
@@ -26,12 +38,191 @@ const Collaborator = () => {
                   <p>Department <span>*</span></p>
                   <input type="text" placeholder='Your answer'/>
               </Second>
+
+              <Second>
+                  <p>Level <span>*</span></p>
+                  <RadioGroup>
+                     <Divhold> 
+                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
+                              <input
+                                type="radio"
+                                name="level"
+                                value="100"
+                                checked={formData.level === '100'}
+                                onChange={handleChange}
+                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
+                          />
+                          </div>
+                          <P>100</P>
+                      </Divhold>
+                      
+                      <Divhold> 
+                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
+                              <input
+                                type="radio"
+                                name="level"
+                                value="200"
+                                checked={formData.level === '200'}
+                                onChange={handleChange}
+                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
+                          />
+                          </div>
+                          <P>200</P>
+                     </Divhold>
+
+                      <Divhold> 
+                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
+                              <input
+                                type="radio"
+                                name="level"
+                                value="300"
+                                checked={formData.level === '300'}
+                                onChange={handleChange}
+                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
+                          />
+                          </div>
+                          <P>300</P>
+                      </Divhold>
+                      
+                      <Divhold> 
+                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
+                              <input
+                                type="radio"
+                                name="level"
+                                value="400"
+                                checked={formData.level === '400'}
+                                onChange={handleChange}
+                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
+                          />
+                          </div>
+                          <P>400</P>
+                      </Divhold>
+                      
+                      <Divhold> 
+                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
+                              <input
+                                type="radio"
+                                name="level"
+                                value="500"
+                                checked={formData.level === '500'}
+                                onChange={handleChange}
+                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
+                          />
+                          </div>
+                          <P>500</P>
+                     </Divhold>
+
+                      <Divhold> 
+                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
+                              <input
+                                type="radio"
+                                name="level"
+                                value="600"
+                                checked={formData.level === '600'}
+                                onChange={handleChange}
+                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
+                          />
+                          </div>
+                          <P>600</P>
+                     </Divhold>
+                  </RadioGroup>
+              </Second>
+
+              <Second>
+                  <p>Email <span>*</span></p>
+                  <input type="email" placeholder='Your answer'/>
+              </Second>
+
+              <Second>
+                  <p>Phone number <span>*</span></p>
+                  <input type="text" placeholder='Your answer'/>
+              </Second>
+
+              <Last>
+                  <Button>Submit</Button>
+                  <Button2>Clear form</Button2>
+              </Last>
+
+              <Last>
+                  <p>Never submit passwords through Google Forms.</p>
+              </Last>
+              <Bottom>
+                  <p>This form was created inside of University of Abuja. Report Abuse</p>
+              </Bottom>
+              <Beneath>Google Forms</Beneath>
           </Wrapper>
     </Container>
   )
 }
 
 export default Collaborator
+const Beneath = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 20px;
+`
+const Bottom = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    p{
+        font-size: 12px;
+    }
+`
+const Button2 = styled.button`
+    color: #7349BD;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+`
+const Button = styled.button`
+    background-color: #7349BD;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+`
+const Last = styled.div`
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 18px;
+    p{
+        font-size: 12px;
+        margin-top: 8px;
+    }
+`
+const P = styled.div`
+    position: absolute;
+    left: 60px;
+    margin-top: 28px;
+`
+const Divhold = styled.div`
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
+    input{
+        /* margin-right: 160px; */
+        height: 100px;
+    }
+`
+
+const RadioGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* height: 30px; */
+  width: 200px;
+  /* background-color: red; */
+`;
 const Second = styled.div`
     display: flex;
     width: 100%;
