@@ -25,6 +25,10 @@ import Pdf from './Pdf_page/Pdf'
 import Adminpdf from './Pdf_page/Adminpdf'
 import Pdfupload from './UploadPage/Pdfupload'
 import Collaborator from './Research/Collaborator'
+import Mentor from './Research/Mentor'
+import Proposal from './Research/Proposal'
+import Presentation from './Research/Presentation'
+import Mentee from './Research/Mentee'
 
 const Allroutes = () => {
     let element = useRoutes([
@@ -86,6 +90,22 @@ const Allroutes = () => {
                 {
                     path: "/collaborator",
                     element: <Collaborator />
+                },
+                {
+                    path: "/mentor",
+                    element: <Mentor />
+                },
+                {
+                    path: "/proposal",
+                    element: <Proposal />
+                },
+                {
+                    path: "/presentation",
+                    element: <Presentation />
+                },
+                {
+                    path: "/mentee",
+                    element: <Mentee />
                 },
                 {
                     path: "/admin",

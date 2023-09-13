@@ -87,7 +87,9 @@ const Header = () => {
   })}>
                         <One>Team</One>
                     </NavLink>
-                    <a href="http://bit.ly/3SK8RG2"><One>Need a Research Mentee</One></a>
+                      <NavLink to="/mentee">
+                          <a href="http://bit.ly/3SK8RG2"><One>Need a Research Mentee</One></a>
+                    </NavLink>
                 </Drops4>
             ) : null}
             {isShown ? (
@@ -108,9 +110,15 @@ const Header = () => {
                       <NavLink to="/collaborator">
                           <One>Need a Research Collaborator</One>
                     </NavLink>
-                    <a href=" http://bit.ly/3kmH0Pz"><One>Need a Research Mentor</One></a>
-                    <a href="https://bit.ly/3ZjJw7S"><One>Trainning for Proposal writting</One></a>
-                    <a href="https://bit.ly/3Ku1K2u"><One>Trainning for Presentation</One></a>
+                      <NavLink to="/mentor">
+                          <a href=" http://bit.ly/3kmH0Pz"><One>Need a Research Mentor</One></a>
+                    </NavLink>
+                      <NavLink to="/proposal">
+                          <a href="https://bit.ly/3ZjJw7S"><One>Trainning for Proposal writting</One></a>
+                    </NavLink>
+                      <NavLink to="/presentation">
+                          <a href="https://bit.ly/3Ku1K2u"><One>Trainning for Presentation</One></a>
+                    </NavLink>
                 </Drop>
             ) : null}
         <Wrapper>
@@ -209,7 +217,9 @@ const Header = () => {
   })}>
                         <One>Team</One>
                     </NavLink>
-                    <a href="http://bit.ly/3SK8RG2"><One>Need a Research Mentee</One></a>
+                                  <NavLink to="/mentee">
+                                      <a href="http://bit.ly/3SK8RG2"><One>Need a Research Mentee</One></a>
+                    </NavLink>
                 </Drops3>
             ) : null}
                     
@@ -227,10 +237,18 @@ const Header = () => {
   })}>
                         <One>Researchers</One>
                     </NavLink>
-                    <a href="https://bit.ly/3XZtpLQ"><One>Need a Research Collaborator</One></a>
-                    <a href=" http://bit.ly/3kmH0Pz"><One>Need a Research Mentor</One></a>
-                   <a href="https://bit.ly/3ZjJw7S"><One>Trainning for Proposal writting</One></a>
-                    <a href="https://bit.ly/3Ku1K2u"><One>Trainning for Presentation</One></a>
+                                  <NavLink to="/collaborator">
+                                      <a href="https://bit.ly/3XZtpLQ"><One>Need a Research Collaborator</One></a>
+                    </NavLink>
+                                  <NavLink to="/mentor">
+                                      <a href=" http://bit.ly/3kmH0Pz"><One>Need a Research Mentor</One></a>
+                    </NavLink>
+                                  <NavLink to="/proposal">
+                                      <a href="https://bit.ly/3ZjJw7S"><One>Trainning for Proposal writting</One></a>
+                   </NavLink>
+                                  <NavLink to="/presentation">
+                                      <a href="https://bit.ly/3Ku1K2u"><One>Trainning for Presentation</One></a>
+                    </NavLink>
                 </Drops1>
             ) : null}
                     <Card>

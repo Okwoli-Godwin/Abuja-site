@@ -8,13 +8,12 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { useNavigate } from 'react-router-dom'
 
-const Collaborator = () => {
+const Presentation = () => {
     const [name, setName] = useState("");
     const [department, setDepartment] = useState("")
     const [level, setLevel] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [email, setEmail] = useState("")
-    const [ResearchTopic, setResesearchTopic] = useState("")
     const navigate = useNavigate()
     
     
@@ -23,7 +22,6 @@ const Collaborator = () => {
         department: yup.string().required("Field is required"),
         level: yup.string().required("Field is required"),
         phoneNumber: yup.number().required("Field is required"),
-        ResearchTopic: yup.string().required("Field is required"),
         email: yup.string().required("Field is required")
     })
         .required();
@@ -38,13 +36,12 @@ const Collaborator = () => {
     const Fetch = async (e: any) => {
         e.preventDefault();
         await axios
-            .post(`https://cur-uni-abuja.onrender.com/app/collaborator/postmessage`, {
+            .post(`https://cur-uni-abuja.onrender.com/app/presentation/postmessage`, {
                 name,
                 email,
                 level,
                 department,
-                phoneNumber,
-                ResearchTopic
+                phoneNumber
             })
             .then((res) => {
                 Swal.fire({
@@ -60,8 +57,8 @@ const Collaborator = () => {
           <Wrapper onSubmit={Fetch}>
               <First>
                   <Top> </Top>
-                  <h2>Training for Proposal Writing</h2>
-                  <p>Are you in need of a Research Collaborator? Fill the form below.</p>
+                  <h2>Training for Presentation</h2>
+                  <p>The Center for Undergraduate Research is training students on how to build a Presentation Slides</p>
                   <Holder>
                       <p>okwolig60@gmail.com <span>Switch account</span></p>
                       <Hold><AiOutlineMail style={{color: "#4b4e52"}}/> <p>Not shared</p></Hold>
@@ -90,13 +87,6 @@ const Collaborator = () => {
                       setLevel(e.target.value)
                   }}
                   placeholder='Your answer'/>
-              </Second>
-
-               <Second>
-                  <p>Research topic <span>*</span></p>
-                  <input {...register("ResearchTopic")} type="text" onChange={(e) => {
-                      setResesearchTopic(e.target.value)
-                  }} placeholder='Your answer'/>
               </Second>
 
               <Second>
@@ -130,7 +120,7 @@ const Collaborator = () => {
   )
 }
 
-export default Collaborator
+export default Presentation
 const Beneath = styled.div`
     display: flex;
     width: 100%;

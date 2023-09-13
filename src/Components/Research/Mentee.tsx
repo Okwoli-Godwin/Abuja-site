@@ -8,23 +8,21 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { useNavigate } from 'react-router-dom'
 
-const Collaborator = () => {
+const Mentee = () => {
     const [name, setName] = useState("");
-    const [department, setDepartment] = useState("")
-    const [level, setLevel] = useState("")
+    const [faculty, setFaculty] = useState("")
+    const [ResearchArea, setResearchArea] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [email, setEmail] = useState("")
-    const [ResearchTopic, setResesearchTopic] = useState("")
     const navigate = useNavigate()
     
     
     const schema = yup.object({
         name: yup.string().required("Field is required"),
-        department: yup.string().required("Field is required"),
-        level: yup.string().required("Field is required"),
-        phoneNumber: yup.number().required("Field is required"),
-        ResearchTopic: yup.string().required("Field is required"),
-        email: yup.string().required("Field is required")
+        faculty: yup.string().required("Field is required"),
+        ResearchArea: yup.string().required("Field is required"),
+        email: yup.string().required("Field is required"),
+        phoneNumber: yup.number().required("Field is required")
     })
         .required();
         
@@ -38,13 +36,12 @@ const Collaborator = () => {
     const Fetch = async (e: any) => {
         e.preventDefault();
         await axios
-            .post(`https://cur-uni-abuja.onrender.com/app/collaborator/postmessage`, {
+            .post(`https://cur-uni-abuja.onrender.com/app/mentee/postmessage`, {
                 name,
+                faculty,
+                ResearchArea,
                 email,
-                level,
-                department,
                 phoneNumber,
-                ResearchTopic
             })
             .then((res) => {
                 Swal.fire({
@@ -60,8 +57,8 @@ const Collaborator = () => {
           <Wrapper onSubmit={Fetch}>
               <First>
                   <Top> </Top>
-                  <h2>Training for Proposal Writing</h2>
-                  <p>Are you in need of a Research Collaborator? Fill the form below.</p>
+                  <h2>Need a Research Mentee</h2>
+                  <p>The form would allow us to connect you with a researcher.</p>
                   <Holder>
                       <p>okwolig60@gmail.com <span>Switch account</span></p>
                       <Hold><AiOutlineMail style={{color: "#4b4e52"}}/> <p>Not shared</p></Hold>
@@ -78,33 +75,27 @@ const Collaborator = () => {
               </Second>
 
               <Second>
-                  <p>Department <span>*</span></p>
-                  <input {...register("department")} type="text" onChange={(e) => {
-                      setDepartment(e.target.value)
+                  <p>Faculty <span>*</span></p>
+                  <input {...register("faculty")} type="text" onChange={(e) => {
+                      setFaculty(e.target.value)
                   }} placeholder='Your answer'/>
               </Second>
 
               <Second>
-                  <p>Level <span>*</span></p>
-                  <input {...register("level")} type="text" onChange={(e) => {
-                      setLevel(e.target.value)
+                  <p>Research Area <span>*</span></p>
+                  <input {...register("ResearchArea")} type="text" onChange={(e) => {
+                      setResearchArea(e.target.value)
                   }}
                   placeholder='Your answer'/>
               </Second>
 
-               <Second>
-                  <p>Research topic <span>*</span></p>
-                  <input {...register("ResearchTopic")} type="text" onChange={(e) => {
-                      setResesearchTopic(e.target.value)
-                  }} placeholder='Your answer'/>
-              </Second>
-
-              <Second>
+                            <Second>
                   <p>Email <span>*</span></p>
                   <input {...register("email")} type="email" onChange={(e) => {
                       setEmail(e.target.value)
                   }} placeholder='Your answer'/>
               </Second>
+
 
               <Second>
                   <p>Phone number <span>*</span></p>
@@ -130,7 +121,7 @@ const Collaborator = () => {
   )
 }
 
-export default Collaborator
+export default Mentee
 const Beneath = styled.div`
     display: flex;
     width: 100%;

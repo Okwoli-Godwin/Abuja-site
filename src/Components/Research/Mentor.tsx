@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { useNavigate } from 'react-router-dom'
 
-const Collaborator = () => {
+const Mentor = () => {
     const [name, setName] = useState("");
     const [department, setDepartment] = useState("")
     const [level, setLevel] = useState("")
@@ -38,7 +38,7 @@ const Collaborator = () => {
     const Fetch = async (e: any) => {
         e.preventDefault();
         await axios
-            .post(`https://cur-uni-abuja.onrender.com/app/collaborator/postmessage`, {
+            .post(`https://cur-uni-abuja.onrender.com/app/mentor/postmessage`, {
                 name,
                 email,
                 level,
@@ -60,8 +60,8 @@ const Collaborator = () => {
           <Wrapper onSubmit={Fetch}>
               <First>
                   <Top> </Top>
-                  <h2>Training for Proposal Writing</h2>
-                  <p>Are you in need of a Research Collaborator? Fill the form below.</p>
+                  <h2>Get a Research Mentor</h2>
+                  <p>Do you need a mentor? The Center for Undergraduate research would provide a mentor .</p>
                   <Holder>
                       <p>okwolig60@gmail.com <span>Switch account</span></p>
                       <Hold><AiOutlineMail style={{color: "#4b4e52"}}/> <p>Not shared</p></Hold>
@@ -130,7 +130,7 @@ const Collaborator = () => {
   )
 }
 
-export default Collaborator
+export default Mentor
 const Beneath = styled.div`
     display: flex;
     width: 100%;
