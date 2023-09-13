@@ -12,6 +12,7 @@ const Cont = () => {
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
   const [Subject, setSubject] = useState("");
+  // const [userData, setUserData] = useState<any>();
   const navigate = useNavigate()
 
   const schema = yup.object({

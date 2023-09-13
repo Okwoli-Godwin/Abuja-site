@@ -1,23 +1,63 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import { AiOutlineMail } from "react-icons/ai"
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from "react-hook-form"
+import * as yup from "yup"
+import { useNavigate } from 'react-router-dom'
 
 const Collaborator = () => {
-    const [formData, setFormData] = useState({
-    name: '',
-    department: '',
-    level: '',
-    email: '',
-    phoneNumber: '',
-    });
+    const [name, setName] = useState("");
+    const [department, setDepartment] = useState("")
+    const [level, setLevel] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
+    const [email, setEmail] = useState("")
+    const [ResearchTopic, setResesearchTopic] = useState("")
+    const navigate = useNavigate()
     
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    
+    const schema = yup.object({
+        name: yup.string().required("Field is required"),
+        department: yup.string().required("Field is required"),
+        level: yup.string().required("Field is required"),
+        phoneNumber: yup.number().required("Field is required"),
+        ResearchTopic: yup.string().required("Field is required"),
+        email: yup.string().required("Field is required")
+    })
+        .required();
+        
+    
+    type formData = yup.InferType<typeof schema>
+
+    const { register } = useForm<formData>({
+        resolver: yupResolver(schema)
+    })
+
+    const Fetch = async (e: any) => {
+        e.preventDefault();
+        await axios
+            .post(`https://cur-uni-abuja.onrender.com/app/collaborator/postmessage`, {
+                name,
+                email,
+                level,
+                department,
+                phoneNumber,
+                ResearchTopic
+            })
+            .then((res) => {
+                Swal.fire({
+                icon: "success",
+                title: "Email Sent",
+                timer: 3000
+            })
+            navigate("/")
+            })
+    }
   return (
       <Container>
-          <Wrapper>
+          <Wrapper onSubmit={Fetch}>
               <First>
                   <Top> </Top>
                   <h2>Training for Proposal Writing</h2>
@@ -31,115 +71,50 @@ const Collaborator = () => {
 
               <Second>
                   <p>Name <span>*</span></p>
-                  <input type="text" placeholder='Your answer'/>
+                  <input {...register("name")} type="text" onChange={(e) => {
+                      setName(e.target.value)
+                  }}
+                    placeholder='Your answer' />
               </Second>
 
               <Second>
                   <p>Department <span>*</span></p>
-                  <input type="text" placeholder='Your answer'/>
+                  <input {...register("department")} type="text" onChange={(e) => {
+                      setDepartment(e.target.value)
+                  }} placeholder='Your answer'/>
               </Second>
 
               <Second>
                   <p>Level <span>*</span></p>
-                  <RadioGroup>
-                     <Divhold> 
-                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
-                              <input
-                                type="radio"
-                                name="level"
-                                value="100"
-                                checked={formData.level === '100'}
-                                onChange={handleChange}
-                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
-                          />
-                          </div>
-                          <P>100</P>
-                      </Divhold>
-                      
-                      <Divhold> 
-                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
-                              <input
-                                type="radio"
-                                name="level"
-                                value="200"
-                                checked={formData.level === '200'}
-                                onChange={handleChange}
-                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
-                          />
-                          </div>
-                          <P>200</P>
-                     </Divhold>
+                  <input {...register("level")} type="text" onChange={(e) => {
+                      setLevel(e.target.value)
+                  }}
+                  placeholder='Your answer'/>
+              </Second>
 
-                      <Divhold> 
-                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
-                              <input
-                                type="radio"
-                                name="level"
-                                value="300"
-                                checked={formData.level === '300'}
-                                onChange={handleChange}
-                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
-                          />
-                          </div>
-                          <P>300</P>
-                      </Divhold>
-                      
-                      <Divhold> 
-                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
-                              <input
-                                type="radio"
-                                name="level"
-                                value="400"
-                                checked={formData.level === '400'}
-                                onChange={handleChange}
-                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
-                          />
-                          </div>
-                          <P>400</P>
-                      </Divhold>
-                      
-                      <Divhold> 
-                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
-                              <input
-                                type="radio"
-                                name="level"
-                                value="500"
-                                checked={formData.level === '500'}
-                                onChange={handleChange}
-                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
-                          />
-                          </div>
-                          <P>500</P>
-                     </Divhold>
-
-                      <Divhold> 
-                          <div style={{marginRight: "260px",width: "100%", position: "relative", backgroundColor: "blue"}}>
-                              <input
-                                type="radio"
-                                name="level"
-                                value="600"
-                                checked={formData.level === '600'}
-                                onChange={handleChange}
-                                style={{ height: "20px", position: "absolute", marginLeft: "-120px" }}
-                          />
-                          </div>
-                          <P>600</P>
-                     </Divhold>
-                  </RadioGroup>
+               <Second>
+                  <p>Research topic <span>*</span></p>
+                  <input {...register("ResearchTopic")} type="text" onChange={(e) => {
+                      setResesearchTopic(e.target.value)
+                  }} placeholder='Your answer'/>
               </Second>
 
               <Second>
                   <p>Email <span>*</span></p>
-                  <input type="email" placeholder='Your answer'/>
+                  <input {...register("email")} type="email" onChange={(e) => {
+                      setEmail(e.target.value)
+                  }} placeholder='Your answer'/>
               </Second>
 
               <Second>
                   <p>Phone number <span>*</span></p>
-                  <input type="text" placeholder='Your answer'/>
+                  <input {...register("phoneNumber")} type="text" onChange={(e) => {
+                      setPhoneNumber(e.target.value)
+                  }} placeholder='Your answer'/>
               </Second>
 
               <Last>
-                  <Button>Submit</Button>
+                  <Button type='submit'>Submit</Button>
                   <Button2>Clear form</Button2>
               </Last>
 
@@ -200,29 +175,6 @@ const Last = styled.div`
         margin-top: 8px;
     }
 `
-const P = styled.div`
-    position: absolute;
-    left: 60px;
-    margin-top: 28px;
-`
-const Divhold = styled.div`
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-bottom: 40px;
-    input{
-        /* margin-right: 160px; */
-        height: 100px;
-    }
-`
-
-const RadioGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  /* height: 30px; */
-  width: 200px;
-  /* background-color: red; */
-`;
 const Second = styled.div`
     display: flex;
     width: 100%;
@@ -312,7 +264,7 @@ const First = styled.div`
         margin-top: 15px;
     }
 `
-const Wrapper = styled.div`
+const Wrapper = styled.form`
     display: flex;
     flex-direction: column;
     width: 48%;
