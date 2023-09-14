@@ -34,26 +34,43 @@ const Collaborator = () => {
         resolver: yupResolver(schema)
     })
 
-    const Fetch = async (e: any) => {
-        e.preventDefault();
-        await axios
-            .post(`https://cur-uni-abuja.onrender.com/app/collaborator/postmessage`, {
-                name,
-                email,
-                level,
-                department,
-                phoneNumber,
-                ResearchTopic
-            })
-            .then((res) => {
-                Swal.fire({
-                icon: "success",
-                title: "Email Sent",
-                timer: 3000
-            })
-            navigate("/")
-            })
+    
+  const Fetch = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      await schema.validate({
+        name,
+        department,
+        level,
+        phoneNumber,
+        ResearchTopic,
+        email,
+      });
+
+      await axios.post(`https://cur-uni-abuja.onrender.com/app/collaborator/postmessage`, {
+        name,
+        email,
+        level,
+        department,
+        phoneNumber,
+        ResearchTopic,
+      });
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Email Sent',
+        timer: 3000,
+      });
+
+      navigate('/');
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Validation Error'
+      });
     }
+  };
   return (
       <Container>
           <Wrapper onSubmit={Fetch}>

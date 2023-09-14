@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import { AiOutlineMail } from "react-icons/ai"
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -34,24 +33,39 @@ const Presentation = () => {
     })
 
     const Fetch = async (e: any) => {
-        e.preventDefault();
-        await axios
-            .post(`https://cur-uni-abuja.onrender.com/app/presentation/postmessage`, {
-                name,
-                email,
-                level,
-                department,
-                phoneNumber
-            })
-            .then((res) => {
-                Swal.fire({
-                icon: "success",
-                title: "Email Sent",
-                timer: 3000
-            })
-            navigate("/")
-            })
+    e.preventDefault();
+
+    try {
+      await schema.validate({
+        name,
+        department,
+        level,
+        phoneNumber,
+        email,
+      });
+
+      await axios.post(`https://cur-uni-abuja.onrender.com/app/presentation/postmessage`, {
+        name,
+        email,
+        level,
+        department,
+        phoneNumber,
+      });
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Email Sent',
+        timer: 3000,
+      });
+
+      navigate('/');
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Validation Error'
+      });
     }
+  };
   return (
       <Container>
           <Wrapper onSubmit={Fetch}>
@@ -59,10 +73,6 @@ const Presentation = () => {
                   <Top> </Top>
                   <h2>Training for Presentation</h2>
                   <p>The Center for Undergraduate Research is training students on how to build a Presentation Slides</p>
-                  <Holder>
-                      <p>okwolig60@gmail.com <span>Switch account</span></p>
-                      <Hold><AiOutlineMail style={{color: "#4b4e52"}}/> <p>Not shared</p></Hold>
-                  </Holder>
                   <Text>* Indicates required question</Text>
               </First>
 
@@ -104,56 +114,40 @@ const Presentation = () => {
               </Second>
 
               <Last>
-                  <Button type='submit'>Submit</Button>
+                  {name !== "" &&
+                    department !== "" &&
+                    level !== "" &&
+                    phoneNumber !== "" &&
+                    email !== "" ? (
+                        <Button bg='#00a85a' cp="pointer" type='submit'>Submit</Button>
+                  ) : (
+                          <Button bg='silver' cp="not-allowed" type='submit'>Submit</Button>
+                    )
+                  }
                   <Button2>Clear form</Button2>
               </Last>
-
-              <Last>
-                  <p>Never submit passwords through Google Forms.</p>
-              </Last>
-              <Bottom>
-                  <p>This form was created inside of University of Abuja. Report Abuse</p>
-              </Bottom>
-              <Beneath>Google Forms</Beneath>
           </Wrapper>
     </Container>
   )
 }
 
 export default Presentation
-const Beneath = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    font-size: 20px;
-`
-const Bottom = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    p{
-        font-size: 12px;
-        @media screen and (max-width: 375px) {
-        text-align: center;
-    }
-    }
-`
 const Button2 = styled.button`
-    color: #7349BD;
+    color: #00a85a;
     border: none;
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
 `
-const Button = styled.button`
-    background-color: #7349BD;
+const Button = styled.button<{ bg: string; cp: string }>`
+    background-color: ${(props) => props.bg};
     color: #fff;
     width: 100px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    cursor: ${(props) => props.cp};
     border: none;
     border-radius: 4px;
 `
@@ -204,37 +198,10 @@ const Text = styled.div`
     font-size: 14px;
     margin-left: 18px;
 `
-const Hold = styled.div`
-    display: flex;
-    margin-left: 18px;
-    align-items: center;
-    margin-top: -10px;;
-    p{
-       
-    }
-`
-const Holder = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-    border-top: 1px solid #DADCE0;
-    border-bottom: 1px solid #DADCE0;
-    /* padding-top: 3px;
-    padding-bottom: 3px; */
-    p{
-        color: #2b2c2e;
-        margin-left: 18px;
-        span{
-            color: #1A73E8;
-            cursor: pointer;
-            margin-left: 5px;
-        }
-    }
-`
 const Top = styled.div`
     width: 100%;
     height: 15px;
-    background-color: #673AB7;
+    background-color: #00a85a;
     margin-top: -4px;
 `
 const First = styled.div`
@@ -264,6 +231,7 @@ const Wrapper = styled.form`
     height: 100%;
     /* background-color: red; */
     padding-top: 12px;
+    margin-bottom: 14px;
     @media screen and (max-width: 768px) {
         width: 65%;
     }
