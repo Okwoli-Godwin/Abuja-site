@@ -125,7 +125,6 @@ const Mentee = () => {
                           <Button bg='silver' cp="not-allowed" type='submit'>Submit</Button>
                       )
                   }
-                  <Button2>Clear form</Button2>
               </Last>
           </Wrapper>
     </Container>
@@ -133,13 +132,6 @@ const Mentee = () => {
 }
 
 export default Mentee
-const Button2 = styled.button`
-    color: #00a85a;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-`
 const Button = styled.button<{ bg: string; cp: string }>`
     background-color: ${(props) => props.bg};
     color: #fff;
