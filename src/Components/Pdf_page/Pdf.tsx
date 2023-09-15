@@ -152,7 +152,7 @@ const Up = styled.div`
 `;
 
 const Box = styled.div`
-  width: 370px;
+  width: 1400px;
   overflow: hidden;
   border-radius: 10px;
   flex-direction: column;
