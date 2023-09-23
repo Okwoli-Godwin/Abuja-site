@@ -11,7 +11,6 @@ import { Store } from './Components/Apis/Store';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import ScrollToTop from './Components/Scrolltotop';
-import { HashRouter} from 'react-router-dom';
 
 const queryClient = new QueryClient();
 let persistor = persistStore(Store);
@@ -24,10 +23,10 @@ root.render(
     <Provider store={Store}>
       <PersistGate persistor={persistor}>
         <QueryClientProvider client={queryClient}>
-          <HashRouter>
+          <BrowserRouter>
             <ScrollToTop />
             <App />
-          </HashRouter>
+          </BrowserRouter>
           <ReactQueryDevtools />
         </QueryClientProvider>
       </PersistGate>
