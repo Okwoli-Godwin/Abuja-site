@@ -31,6 +31,38 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>CUR</title>
+
+        <script>
+        (function() {
+            // Check if the path matches an existing file or directory on the server
+            // function pathExists(path) {
+            //     // You may need to customize this logic depending on your server setup
+            //     // Here, we assume that if the path contains a dot (.) or ends with a slash (/), it's a file or directory
+            //     return /\..+|\/$/.test(path);
+            // }
+            function pathExists(path) {
+    // You may need to customize this logic depending on your server setup
+    // Here, we assume that if the path starts with a slash and contains a dot (.) or ends with a slash (/), it's a file or directory
+    return /^\/\..+|\/$/.test(path);
+}
+
+            // Handle routing on the client side
+            function handleRoute() {
+                const currentPath = window.location.pathname;
+
+                // If the path doesn't exist on the server, redirect to the root
+                if (!pathExists(currentPath)) {
+                    window.location.replace('/');
+                }
+            }
+
+            // Listen for changes in the URL and handle routing
+            window.addEventListener('popstate', handleRoute);
+
+            // Initial route handling when the page loads
+            handleRoute();
+        })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
